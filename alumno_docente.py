@@ -1,5 +1,3 @@
-#Registro de alumnos/docentes
-
 registro = input(f'¿Ingresará registro de "alumno" o "docente"?\n')
 
 if registro=="alumno":
@@ -50,9 +48,10 @@ if registro=="alumno":
 
         def agregar_alumnos(self,alumno):
             try:
-                file=open(self.nombre_archivo, 'a')
-                texto_alumnos = f'{alumno.nombre}, {alumno.notas}, {alumno.estadisticas}\n'
-                file.write(texto_alumnos)
+                file=open(self.nombre_archivo, 'a', encoding= 'utf-8')
+                #texto_alumnos = f'{alumno.nombre}, {alumno.notas}, {alumno.estadisticas}\n'
+                file.write(f'Alumno: {alumno.nombre}, Notas: {alumno.notas}, Máxima Nota: {alumno.estadisticas[0]}, Mínima Nota: {alumno.estadisticas[1]}, Promedio: {alumno.estadisticas[2]}\n')
+                # file.write(texto_alumnos)
             except Exception as e:
                 print(f'error: {e}')
             finally:
@@ -72,6 +71,7 @@ elif registro=="docente":
                 break
             else:
                 print('Ingrese caracteres válidos\n')
+            break
         except ValueError as e:
             print('Por favor, ingrese nombre del alumno')
 
@@ -116,9 +116,10 @@ elif registro=="docente":
 
         def agregar_docentes(self,docente):
             try:
-                file=open(self.nombre_archivo, 'a')
-                texto_docentes = f'{docente.nombre}, {docente.edad}, {docente.dni}\n'
-                file.write(texto_docentes)
+                file=open(self.nombre_archivo, 'a', encoding= 'utf-8')
+                #texto_docentes = f'{docente.nombre}, {docente.edad}, {docente.dni}\n'
+                file.write(f'Docente: {docente.nombre}, Edad: {docente.edad}, DNI: {docente.dni}\n')
+                #file.write(texto_docentes)
             except Exception as e:
                 print(f'error: {e}')
             finally:
